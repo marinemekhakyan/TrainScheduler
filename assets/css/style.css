@@ -10,5 +10,15 @@
  }
 
  .train-meme {
-    
+    margin-left: 350px;
  }
+
+ .text-center {
+    font-family: 'Rubik Mono One', sans-serif; 
+}
+
+#add-train-btn {
+    background-color: #fd017e;
+    color: white;
+    margin-right: 50%;
+}
