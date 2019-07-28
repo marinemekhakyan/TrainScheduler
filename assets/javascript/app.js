@@ -31,7 +31,7 @@ $("#add-train-btn").on("click", function (event) {
     var trainName = $("#train-name-input").val().trim();
     var trainDestination = $("#destination-input").val().trim();
     var firstTrain = $("#first-train-input").val().trim().format("hh:mm:ss");
-    var trainFrequency = $("#frequency-input").val().trim().format("mm:ss"); 
+    var trainFrequency = $("#frequency-input").val().trim().format("mm:ss");
 })
 
 var newTrain = {
@@ -39,38 +39,48 @@ var newTrain = {
     destination: trainDestination,
     first: firstTrain,
     frequency: trainFrequency
-  };
+};
 
-  database.ref().push(newTrain);
-  
-    // Logs everything to console
-    console.log(newTrain.name);
-    console.log(newTrain.destination);
-    console.log(newTrain.first);
-    console.log(newTrain.frequency);
-  
-    alert("Train successfully added");
+database.ref().push(newTrain);
 
-    //clears boxes
+// Logs everything to console
+console.log(newTrain.name);
+console.log(newTrain.destination);
+console.log(newTrain.first);
+console.log(newTrain.frequency);
 
-    $("#train-name-input").val("");
-    $("#destination-input").val("");
-    $("#first-train-input").val("");
-    $("#frequency-input").val("");
+alert("Train successfully added");
 
-    //stores new info on Firebase
+//clears boxes
 
-    database.ref().on("child_added", function(childSnapshot) {
-        console.log(childSnapshot.val());
-      
-        // Store everything into a variable.
-        var trainName = childSnapshot.val().name;
-        var trainDestination = childSnapshot.val().destination;
-        var firstTrain = childSnapshot.val().first;
-        var trainFrequency = childSnapshot.val().frequency;
-      
-        // Employee Info
-        console.log(trainName);
-        console.log(trainDestination);
-        console.log(firstTrain);
-        console.log(trainFrequency); });
+$("#train-name-input").val("");
+$("#destination-input").val("");
+$("#first-train-input").val("");
+$("#frequency-input").val("");
+
+//stores new info on Firebase
+
+database.ref().on("child_added", function (childSnapshot) {
+    console.log(childSnapshot.val());
+
+    // Store everything into a variable.
+    var trainName = childSnapshot.val().name;
+    var trainDestination = childSnapshot.val().destination;
+    var firstTrain = childSnapshot.val().first;
+    var trainFrequency = childSnapshot.val().frequency;
+
+    // Employee Info
+    console.log(trainName);
+    console.log(trainDestination);
+    console.log(firstTrain);
+    console.log(trainFrequency);
+
+
+var firstTrainTime = moment.unix(firstTrain).format("hh:mm:ss");
+var nextTrain = moment().diff(moment(firstTrain, "mm:ss"), "minutes");
+    console.log(nextTrain);
+
+
+
+
+});
