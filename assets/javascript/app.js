@@ -61,30 +61,32 @@ $("#add-train-btn").on("click", function (event) {
         var trainFrequency = childSnapshot.val().frequency;
 
         // Train Info
-        console.log(trainName);
-        console.log(trainDestination);
-        console.log(firstTrain);
-        console.log(trainFrequency);
+        console.log("Name " + trainName);
+        console.log("Destination " + trainDestination);
+        console.log("Time " + firstTrain);
+        console.log("Frequency " + trainFrequency);
 
         // Calculations
+
+        var frequency = parseInt(frequency);
 
         var firstTrainConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
         console.log(firstTrainConverted);
 
         var currentTime = moment();
-        console.log("Current Time: " + moment(currentTime).format("hh:mm"));
+        console.log("Current Time: " + moment(currentTime).format("HH:mm"));
 
         var diffTime = moment().diff(moment(firstTrainConverted), "minutes");
         console.log("Difference in time: " + diffTime);
 
         var remainingTime = diffTime % trainFrequency;
-        console.log(remainingTime);
+        console.log("Remaining time" + remainingTime);
 
         var minutesAway = trainFrequency - remainingTime;
-        console.log("Minutes Away: " + minutesAway);
+        console.log(minutesAway + " minutes away");
 
         var nextTrain = moment().add(minutesAway, "minutes");
-        console.log("Next Arrival: " + moment(nextTrain).format("hh:mm"));
+        console.log("Next Arrival: " + moment(nextTrain).format("HH:mm A"));
 
 
         var newRow = $("<tr>").append(
@@ -98,5 +100,6 @@ $("#add-train-btn").on("click", function (event) {
 
         $("#train-table > tbody").append(newRow);
     });
+
 
 });
