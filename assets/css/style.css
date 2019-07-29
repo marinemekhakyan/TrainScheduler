@@ -5,12 +5,16 @@
     }
 
  .jumbotron {
-     background-color: white; 
-     color: #fd017e;
+     background-color: #DDE5ED; 
+     color: black;
+     opacity: 0.8;
+     height: 530px;
+     width: 100%;
  }
 
- .train-meme {
-    margin-left: 350px;
+ .train-image {
+    margin-left: 200px;
+
  }
 
  .text-center {
@@ -18,7 +22,16 @@
 }
 
 #add-train-btn {
-    background-color: #fd017e;
+    background-color: black;
     color: white;
     margin-right: 50%;
+}
+
+.card-header {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+body {
+   
 }
